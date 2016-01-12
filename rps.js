@@ -1,5 +1,4 @@
 // init vars
-// Not even using all of these at the moment, might trim down when I rework the UI
 var gameHistoryElem = document.getElementById('gameHistory');
 var gameTitlePanelElem = document.getElementById('gameTitlePanel');
 var gameTextElem = document.getElementById('gameText');
@@ -11,46 +10,45 @@ function gameWrite(state) {
     gameTextElem.innerText = "You " + state;
     switch (state) {
         case "WIN":
-            // Still probably a better way to do this...
-            gameTitlePanelElem.setAttribute("class","panel panel-success");
+            gameTitlePanelElem.setAttribute("class", "panel panel-success");
             break;
         case "STALEMATE":
-            gameTitlePanelElem.setAttribute("class","panel panel-warning");
+            gameTitlePanelElem.setAttribute("class", "panel panel-warning");
             break;
         case "LOSE":
-            gameTitlePanelElem.setAttribute("class","panel panel-danger");
+            gameTitlePanelElem.setAttribute("class", "panel panel-danger");
             break;
     }
 }
 
-function runGame(playerChoice) {
-    // Change the game image to players choice
-    gameImageElem.setAttribute("src", "img/" + playerChoice.toLowerCase() + ".png");
-    // Get Computer Choice
-    // Pick at random
-    // 1=rock,2=paper,3=scissors
-    var computerChoice = Math.floor(Math.random() * 3) + 1;
+function runGame(playerChoiceNum) {
     // Allow us to get human readable output
-    var computerText = {
+    var gameNumToStrObj = {
         1: "ROCK",
         2: "PAPER",
         3: "SCISSORS"
     }
+    // Change the game image to players choice
+    gameImageElem.setAttribute("src", "img/" + gameNumToStrObj[playerChoiceNum].toLowerCase() + ".png");
+    // Get Computer Choice
+    // Pick at random
+    // 1=rock,2=paper,3=scissors
+    var computerChoiceNum = Math.floor(Math.random() * 3) + 1;
     // Process Player Choice !!! Kinda redundant now? I'll fix later
-    var playerChoiceObj = {
-        ROCK: 3,
-        PAPER: 1,
-        SCISSORS: 2
+    var winConditionsObj = {
+        1: 3,
+        2: 1,
+        3: 2
     }
     // Write to the game History so we can see what everyone got
     var newItem = document.createElement("DIV");
-    var divInner = document.createTextNode("Computer: " + computerText[computerChoice] + " Player: " + playerChoice);
+    var divInner = document.createTextNode("Computer: " + gameNumToStrObj[computerChoiceNum] + " Player: " + gameNumToStrObj[playerChoiceNum]);
     newItem.appendChild(divInner);
     gameHistoryElem.insertBefore(newItem, gameHistoryElem.childNodes[0]);
     // Actual game logic
-    if (playerChoiceObj[playerChoice] === computerChoice) {
+    if (winConditionsObj[playerChoiceNum] === computerChoiceNum) {
         gameWrite("WIN");
-    } else if (playerChoice === computerText[computerChoice]) {
+    } else if (playerChoiceNum === computerChoiceNum) {
         gameWrite("STALEMATE");
     } else {
         gameWrite("LOSE");
