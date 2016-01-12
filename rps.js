@@ -68,7 +68,14 @@ function runGame (newChoice) {
 
     if (playerChoiceObj[playerChoice] === computerChoice) {
         gameWrite("WIN");
+        // I know there's a better way to do this but this works for now
+        gameTitlePanelElem.classList.remove("panel-primary");
+        gameTitlePanelElem.classList.remove("panel-danger");
+        gameTitlePanelElem.classList.add("panel-success");
     } else {
         gameWrite("LOSE");
+        gameTitlePanelElem.classList.remove("panel-primary");
+        gameTitlePanelElem.classList.remove("panel-success");
+        gameTitlePanelElem.classList.add("panel-danger");
     }
 }
