@@ -1,22 +1,50 @@
 <html>
-<head>
 
+<head>
     <meta charset="UTF-8">
     <title>Site name</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+    crossorigin="anonymous">
 </head>
 
 <body>
 
+    <!--Open site container-->
+    <div class="container-fluid">
 
+        <!--History container-->
+        <!--Ugly but it works, come back and fix later-->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Game History</h3></div>
+            <div id="gameHistory" class="well well-lg" style="height:200px!important;overflow-y:scroll!important;">
+            </div>
+        </div>
+        <!--Game container-->
+        <div id="gameTitlePanel" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 id="gameTitle" class="panel-title">Rock Paper Scissors</h3></div>
+            <div class="panel-body">
+                <div id="gameText">Game goes here</div>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-default" onclick="runGame('ROCK')">Rock</button>
+                    <button class="btn btn-default" onclick="runGame('PAPER')">Paper</button>
+                    <button class="btn btn-default" onclick="runGame('SCISSORS')">Scissors</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Close site container-->
+    </div>
 
 </body>
-
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+crossorigin="anonymous"></script>
 <script src="rps.js"></script>
+
 </html>

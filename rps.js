@@ -1,18 +1,24 @@
-//write a play game function that can prompt for a choice set the computerChoice and then run the compute
+// Lets rewrite some code!
+// init vars
+var gameHistoryElem = document.getElementById('gameHistory');
+var gameTitlePanelElem = document.getElementById('gameTitlePanel');
+var gameTitleElem = document.getElementById('gameTitle');
+var gameTextElem = document.getElementById('gameText');
+var gameState = null;
 
-//use a confirm to play again playGame()
+// write functions
 
+// !!!HEY, DON'T FORGET TO REWRITE THE GAME LOGIC TO START WITH
+//    USER INPUT INSTEAD OF RUNNING ON ITS OWN!!!!
 function sanitize(input) {
     return input.toUpperCase().trim();
 }
 
-function getChoice(){
+function getChoice(choice){
     // Set flag
     var invalidChoice = true;
-    // Gather input
-    var playerInput = prompt("Rock, Paper, or Scissors?");
     // Clean input
-    playerInput = sanitize(playerInput);
+    var playerInput = sanitize(choice);
     // Check input
     while (invalidChoice) {
         // If clean break while
@@ -21,7 +27,7 @@ function getChoice(){
         } else {
             // If dirty regather input and clean to check again
             playerInput = prompt("You said: \""+playerInput+"\". Lets try again: Rock, Paper, or Scissors?");
-            playerInput = sanitize(playerInput);
+            playerInput = sanitize(choice);
         }
     }
     return playerInput; 
@@ -29,7 +35,7 @@ function getChoice(){
 
 function getCompChoice() {
     // Pick at random
-    randomVar = Math.floor(Math.random() * 3) + 1;
+    var randomVar = Math.floor(Math.random() * 3) + 1;
     // Convert to game input
     switch (randomVar) {
     case 1:
@@ -44,71 +50,47 @@ function getCompChoice() {
     }
 }
 
-function runGame () {
+function gameWrite(state) {
+    gameTextElem.innerText = "You "+state;
+}
+
+function runGame (newChoice) {
 
     // Get Computer Choice
-    computerChoice = getCompChoice();
-    // Get Player Choice
-    playerChoice = getChoice();
+    var computerChoice = getCompChoice();
+    var playerChoice = getChoice(newChoice);
+    gameHistoryElem.innerHTML += "<br />";
+    gameHistoryElem.innerText += "Computer: "+computerChoice+" Player: "+playerChoice;
 
 
     // COMPUTE GAME
     switch (playerChoice) {
         case 'ROCK':
             if (computerChoice === "ROCK") {
-                return "STALEMATE";
+                gameWrite("DRAW");
             } else if (computerChoice === "PAPER") {
-                return "LOSE";
+                gameWrite("LOSE");
             } else {
-                return "WIN";
+                gameWrite("WIN");
             }
         break;
         case 'PAPER':
             if (computerChoice === "ROCK") {
-                return "WIN";
+                gameWrite("WIN");
             } else if (computerChoice === "PAPER") {
-                return "STALEMATE";
+                gameWrite("DRAW");
             } else {
-                return "LOSE";
+                gameWrite("LOSE");
             }
         break;
         case 'SCISSORS':
             if (computerChoice === "ROCK") {
-                return "LOSE";
+                gameWrite("LOSE");
             } else if (computerChoice === "PAPER") {
-                return "WIN";
+                gameWrite("WIN");
             } else {
-                return "STALEMATE";
+                gameWrite("DRAW");
             }
         break;
     }
 }
-
-function playAgain (value) {
-
-    // Check game status
-    switch (value) {
-        case "WIN":
-        alert("You win!");
-        break;
-        case "LOSE":
-        alert("You lose!");
-        break;
-        case "STALEMATE":
-        alert("Stalemate!");
-        break;
-    }
-
-    // Ask to play again
-    var play = confirm("Play Again?");
-    if (play) {
-        gameState = runGame ();
-        playAgain(gameState);
-    } else {
-        alert("Lets play again soon!");
-    }
-}
-
-// Run initial instance of game
-gameState = runGame ();
-playAgain(gameState);
