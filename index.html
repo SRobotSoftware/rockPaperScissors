@@ -21,8 +21,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Game History</h3></div>
-            <div id="gameHistory" class="well well-lg">
-                History goes here
+            <div id="gameHistory" class="well well-lg" style="height:200px!important;overflow-y:scroll!important;">
             </div>
         </div>
         <!--Game container-->
@@ -32,9 +31,9 @@
             <div class="panel-body">
                 <div id="gameText">Game goes here</div>
                 <div class="btn-group" role="group">
-                    <button class="btn btn-default" type="submit">Rock</button>
-                    <button class="btn btn-default" type="submit">Paper</button>
-                    <button class="btn btn-default" type="submit">Scissors</button>
+                    <button class="btn btn-default" onclick="runGame('ROCK')">Rock</button>
+                    <button class="btn btn-default" onclick="runGame('PAPER')">Paper</button>
+                    <button class="btn btn-default" onclick="runGame('SCISSORS')">Scissors</button>
                 </div>
             </div>
         </div>

@@ -7,17 +7,18 @@ var gameTextElem = document.getElementById('gameText');
 var gameState = null;
 
 // write functions
+
+// !!!HEY, DON'T FORGET TO REWRITE THE GAME LOGIC TO START WITH
+//    USER INPUT INSTEAD OF RUNNING ON ITS OWN!!!!
 function sanitize(input) {
     return input.toUpperCase().trim();
 }
 
-function getChoice(){
+function getChoice(choice){
     // Set flag
     var invalidChoice = true;
-    // Gather input
-    var playerInput = prompt("Rock, Paper, or Scissors?");
     // Clean input
-    playerInput = sanitize(playerInput);
+    var playerInput = sanitize(choice);
     // Check input
     while (invalidChoice) {
         // If clean break while
@@ -26,7 +27,7 @@ function getChoice(){
         } else {
             // If dirty regather input and clean to check again
             playerInput = prompt("You said: \""+playerInput+"\". Lets try again: Rock, Paper, or Scissors?");
-            playerInput = sanitize(playerInput);
+            playerInput = sanitize(choice);
         }
     }
     return playerInput; 
@@ -49,12 +50,13 @@ function getCompChoice() {
     }
 }
 
-function runGame () {
+function runGame (newChoice) {
 
     // Get Computer Choice
     var computerChoice = getCompChoice();
-    // Get Player Choice
-    var playerChoice = getChoice();
+    var playerChoice = getChoice(newChoice);
+    gameHistoryElem.innerHTML += "<br />";
+    gameHistoryElem.innerText += "Computer: "+computerChoice+" Player: "+playerChoice;
 
 
     // COMPUTE GAME
@@ -113,8 +115,3 @@ function playAgain (value) {
         alert("Lets play again soon!");
     }
 }
-
-// Run initial instance of game 
-// !!!BREAKING FOR NOW TO WORK ON UI!!!
-// gameState = runGame ();
-// playAgain(gameState);
