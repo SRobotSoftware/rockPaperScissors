@@ -10,19 +10,8 @@ var gameState = null;
 
 function getCompChoice() {
     // Pick at random
-    var randomVar = Math.floor(Math.random() * 3) + 1;
-    // Convert to game input !!! Could probably rewrite this to just return the number, would trim lines, but make it harder to read
-    switch (randomVar) {
-        case 1:
-            return "ROCK";
-            break;
-        case 2:
-            return "PAPER";
-            break;
-        case 3:
-            return "SCISSORS";
-            break;
-    }
+    // 1=rock,2=paper,3=scissors
+    return Math.floor(Math.random() * 3) + 1;
 }
 
 function gameWrite(state) {
@@ -47,13 +36,13 @@ function runGame(newChoice) {
     // Process Player Choice !!! Kinda redundant now? I'll fix later !!! This should be rewritten probably maybe numbers?
     var playerChoice = newChoice;
     var playerChoiceObj = {
-        ROCK: "SCISSORS",
-        PAPER: "ROCK",
-        SCISSORS: "PAPER"
+        ROCK: 3,
+        PAPER: 1,
+        SCISSORS: 2
     }
     // Write to the game History so we can see what everyone got
     gameHistoryElem.innerHTML += "<br />";
-    gameHistoryElem.innerText += "Computer: " + computerChoice + " Player: " + playerChoice;
+    gameHistoryElem.innerText += "Computer: " + computerChoice + " Player: " + playerChoice + " " + playerChoiceObj[playerChoice];
     // Actual game logic !!! I could probably rewrite this with numbers in the objects to determine a stalemate
     if (playerChoiceObj[playerChoice] === computerChoice) {
         gameWrite("WIN");
