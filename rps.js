@@ -7,9 +7,6 @@ var gameTextElem = document.getElementById('gameText');
 var gameState = null;
 
 // write functions
-
-// !!!HEY, DON'T FORGET TO REWRITE THE GAME LOGIC TO START WITH
-//    USER INPUT INSTEAD OF RUNNING ON ITS OWN!!!!
 function sanitize(input) {
     return input.toUpperCase().trim();
 }
@@ -58,39 +55,22 @@ function runGame (newChoice) {
 
     // Get Computer Choice
     var computerChoice = getCompChoice();
+    // Process Player Choice !!! This should be rewritten probably
     var playerChoice = getChoice(newChoice);
+    var playerChoiceObj = {
+        ROCK: "SCISSORS",
+        PAPER: "ROCK",
+        SCISSORS: "PAPER"
+    }
+    // Write to the game History so we can see what everyone got
     gameHistoryElem.innerHTML += "<br />";
     gameHistoryElem.innerText += "Computer: "+computerChoice+" Player: "+playerChoice;
+    gameHistoryElem.innerHTML += "<br />";
+    gameHistoryElem.innerText += "DBG VAR:"+playerChoiceObj[playerChoice];
 
-
-    // COMPUTE GAME
-    switch (playerChoice) {
-        case 'ROCK':
-            if (computerChoice === "ROCK") {
-                gameWrite("DRAW");
-            } else if (computerChoice === "PAPER") {
-                gameWrite("LOSE");
-            } else {
-                gameWrite("WIN");
-            }
-        break;
-        case 'PAPER':
-            if (computerChoice === "ROCK") {
-                gameWrite("WIN");
-            } else if (computerChoice === "PAPER") {
-                gameWrite("DRAW");
-            } else {
-                gameWrite("LOSE");
-            }
-        break;
-        case 'SCISSORS':
-            if (computerChoice === "ROCK") {
-                gameWrite("LOSE");
-            } else if (computerChoice === "PAPER") {
-                gameWrite("WIN");
-            } else {
-                gameWrite("DRAW");
-            }
-        break;
+    if (playerChoiceObj[playerChoice] === computerChoice) {
+        gameWrite("WIN");
+    } else {
+        gameWrite("LOSE");
     }
 }
