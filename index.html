@@ -20,15 +20,15 @@
         <div class="col-xs-3 col-xs-offset-2 text-center">
             <div id="gameTitlePanel" class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 id="gameTitle" class="panel-title">Rock Paper Scissors</h3></div>
+                    <h3 class="panel-title">Rock Paper Scissors</h3></div>
                 <div class="panel-body">
                     <div id="gameText">Lets play a game!</div>
                     <div style="margin-top:12px;margin-bottom:12px;"><img src="img/rps.png" id="gameImage" alt="game image">
                     </div>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-default" onclick="runGame('ROCK')">Rock</button>
-                        <button class="btn btn-default" onclick="runGame('PAPER')">Paper</button>
-                        <button class="btn btn-default" onclick="runGame('SCISSORS')">Scissors</button>
+                        <button class="btn btn-default" onclick="runGame(1)">Rock</button>
+                        <button class="btn btn-default" onclick="runGame(2)">Paper</button>
+                        <button class="btn btn-default" onclick="runGame(3)">Scissors</button>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <!--History container-->
         <!--Ugly but it works, come back and fix later-->
         <div class="col-xs-4">
-            <div id="gameHistory" class="well well-lg" style="height:200px!important;overflow-y:scroll!important;">Game History: </div>
+            <div id="gameHistory" class="well well-lg" style="height:200px!important;overflow-y:scroll!important;"></div>
         </div>
 
         <!--Close site container-->
