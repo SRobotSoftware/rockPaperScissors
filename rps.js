@@ -50,6 +50,10 @@ function getCompChoice() {
     }
 }
 
+function gameWrite(state) {
+    gameTextElem.innerText = "You "+state;
+}
+
 function runGame (newChoice) {
 
     // Get Computer Choice
@@ -63,55 +67,30 @@ function runGame (newChoice) {
     switch (playerChoice) {
         case 'ROCK':
             if (computerChoice === "ROCK") {
-                return "STALEMATE";
+                gameWrite("DRAW");
             } else if (computerChoice === "PAPER") {
-                return "LOSE";
+                gameWrite("LOSE");
             } else {
-                return "WIN";
+                gameWrite("WIN");
             }
         break;
         case 'PAPER':
             if (computerChoice === "ROCK") {
-                return "WIN";
+                gameWrite("WIN");
             } else if (computerChoice === "PAPER") {
-                return "STALEMATE";
+                gameWrite("DRAW");
             } else {
-                return "LOSE";
+                gameWrite("LOSE");
             }
         break;
         case 'SCISSORS':
             if (computerChoice === "ROCK") {
-                return "LOSE";
+                gameWrite("LOSE");
             } else if (computerChoice === "PAPER") {
-                return "WIN";
+                gameWrite("WIN");
             } else {
-                return "STALEMATE";
+                gameWrite("DRAW");
             }
         break;
-    }
-}
-
-function playAgain (value) {
-
-    // Check game status
-    switch (value) {
-        case "WIN":
-        alert("You win!");
-        break;
-        case "LOSE":
-        alert("You lose!");
-        break;
-        case "STALEMATE":
-        alert("Stalemate!");
-        break;
-    }
-
-    // Ask to play again
-    var play = confirm("Play Again?");
-    if (play) {
-        gameState = runGame ();
-        playAgain(gameState);
-    } else {
-        alert("Lets play again soon!");
     }
 }
