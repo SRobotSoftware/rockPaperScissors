@@ -4,6 +4,7 @@ var gameHistoryElem = document.getElementById('gameHistory');
 var gameTitlePanelElem = document.getElementById('gameTitlePanel');
 var gameTitleElem = document.getElementById('gameTitle');
 var gameTextElem = document.getElementById('gameText');
+var gameImageElem = document.getElementById('gameImage');
 var gameState = null;
 
 // write functions
@@ -57,6 +58,9 @@ function gameWrite(state) {
 
 // This definitely feels like it needs some streamlining, the logic is fine but I think I can move some of the code to other functions
 function runGame (newChoice) {
+    
+    // Change the game image
+    gameImageElem.setAttribute("src", "img/"+newChoice.toLowerCase()+".png");
 
     // Get Computer Choice
     var computerChoice = getCompChoice();
