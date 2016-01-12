@@ -65,8 +65,6 @@ function runGame (newChoice) {
     // Write to the game History so we can see what everyone got
     gameHistoryElem.innerHTML += "<br />";
     gameHistoryElem.innerText += "Computer: "+computerChoice+" Player: "+playerChoice;
-    gameHistoryElem.innerHTML += "<br />";
-    gameHistoryElem.innerText += "DBG VAR:"+playerChoiceObj[playerChoice];
 
     if (playerChoiceObj[playerChoice] === computerChoice) {
         gameWrite("WIN");
