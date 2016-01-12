@@ -1,7 +1,12 @@
-//write a play game function that can prompt for a choice set the computerChoice and then run the compute
+// Lets rewrite some code!
+// init vars
+var gameHistoryElem = document.getElementById('gameHistory');
+var gameTitlePanelElem = document.getElementById('gameTitlePanel');
+var gameTitleElem = document.getElementById('gameTitle');
+var gameTextElem = document.getElementById('gameText');
+var gameState = null;
 
-//use a confirm to play again playGame()
-
+// write functions
 function sanitize(input) {
     return input.toUpperCase().trim();
 }
@@ -29,7 +34,7 @@ function getChoice(){
 
 function getCompChoice() {
     // Pick at random
-    randomVar = Math.floor(Math.random() * 3) + 1;
+    var randomVar = Math.floor(Math.random() * 3) + 1;
     // Convert to game input
     switch (randomVar) {
     case 1:
@@ -47,9 +52,9 @@ function getCompChoice() {
 function runGame () {
 
     // Get Computer Choice
-    computerChoice = getCompChoice();
+    var computerChoice = getCompChoice();
     // Get Player Choice
-    playerChoice = getChoice();
+    var playerChoice = getChoice();
 
 
     // COMPUTE GAME
