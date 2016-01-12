@@ -1,4 +1,3 @@
-// init vars
 var gameHistoryElem = document.getElementById('gameHistory');
 var gameTitlePanelElem = document.getElementById('gameTitlePanel');
 var gameTextElem = document.getElementById('gameText');
@@ -10,8 +9,6 @@ var gamesPlayedElem = document.getElementById('gamesPlayed');
 var playerWinsNum = 0;
 var computerWinsNum = 0;
 var gamesPlayedNum = 0;
-
-// write functions
 function gameWrite(state) {
     // Writes results to page
     switch (state) {
@@ -33,16 +30,15 @@ function gameWrite(state) {
     computerWinsElem.innerText = "C Wins: " + computerWinsNum;
     gamesPlayedElem.innerText = "Total Games Played: " + gamesPlayedNum;
 }
-
 function runGame(playerChoiceNum) {
+    // Actually runs our game
     // Allow us to get human readable output
     var gameNumToStrObj = {
         1: "ROCK",
         2: "PAPER",
         3: "SCISSORS"
     }
-    // Get Computer Choice
-    // Pick at random
+    // Get Computer Choice at random
     // 1=rock,2=paper,3=scissors
     var computerChoiceNum = Math.floor(Math.random() * 3) + 1;
     // Change the game images
