@@ -2,7 +2,8 @@
 var gameHistoryElem = document.getElementById('gameHistory');
 var gameTitlePanelElem = document.getElementById('gameTitlePanel');
 var gameTextElem = document.getElementById('gameText');
-var gameImageElem = document.getElementById('gameImage');
+var playerImgElem = document.getElementById('playerImg');
+var computerImgElem = document.getElementById('computerImg');
 
 // write functions
 function gameWrite(state) {
@@ -28,13 +29,14 @@ function runGame(playerChoiceNum) {
         2: "PAPER",
         3: "SCISSORS"
     }
-    // Change the game image to players choice
-    gameImageElem.setAttribute("src", "img/" + gameNumToStrObj[playerChoiceNum].toLowerCase() + ".png");
     // Get Computer Choice
     // Pick at random
     // 1=rock,2=paper,3=scissors
     var computerChoiceNum = Math.floor(Math.random() * 3) + 1;
-    // Process Player Choice !!! Kinda redundant now? I'll fix later
+    // Change the game images
+    playerImgElem.setAttribute("src", "img/" + gameNumToStrObj[playerChoiceNum].toLowerCase() + ".png");
+    computerImgElem.setAttribute("src", "img/" + gameNumToStrObj[computerChoiceNum].toLowerCase() + ".png");
+    // Create a win condition object
     var winConditionsObj = {
         1: 3,
         2: 1,

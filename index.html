@@ -9,12 +9,13 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <!--Open site container-->
-    <div class="container-fluid row" style="padding-top:20px;">
+    <div class="container-fluid row site-container">
 
         <!--Game container-->
         <div class="col-xs-3 col-xs-offset-2 text-center">
@@ -23,7 +24,9 @@
                     <h3 class="panel-title">Rock Paper Scissors</h3></div>
                 <div class="panel-body">
                     <div id="gameText">Lets play a game!</div>
-                    <div style="margin-top:12px;margin-bottom:12px;"><img src="img/rps.png" id="gameImage" alt="game image">
+                    <div class="img-container">
+                        <img src="img/rps.png" id="playerImg" alt="game image" />
+                        <img src="img/rps.png" id="computerImg" alt="game image" />
                     </div>
                     <div class="btn-group" role="group">
                         <button class="btn btn-default" onclick="runGame(1)">Rock</button>
@@ -36,7 +39,7 @@
         <!--History container-->
         <!--Ugly but it works, come back and fix later-->
         <div class="col-xs-4">
-            <div id="gameHistory" class="well well-lg" style="height:200px!important;overflow-y:scroll!important;"></div>
+            <div id="gameHistory" class="well well-lg history"></div>
         </div>
 
         <!--Close site container-->
