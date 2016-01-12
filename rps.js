@@ -109,6 +109,7 @@ function playAgain (value) {
     }
 }
 
-// Run initial instance of game
-gameState = runGame ();
-playAgain(gameState);
+// Run initial instance of game 
+// !!!BREAKING FOR NOW TO WORK ON UI!!!
+// gameState = runGame ();
+// playAgain(gameState);
